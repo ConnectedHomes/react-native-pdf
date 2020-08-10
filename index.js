@@ -87,7 +87,7 @@ export default class Pdf extends Component {
         enableRTL: false,
         activityIndicatorProps: {color: '#009900', progressTintColor: '#009900'},
         trustAllCerts: true,
-        usePDFKit: false,
+        usePDFKit: true,
         onLoadProgress: (percent) => {
         },
         onLoadComplete: (numberOfPages, path) => {
@@ -421,26 +421,14 @@ export default class Pdf extends Component {
                                             path={this.state.path}
                                             onChange={this._onChange}
                                         />
-                                    ):(
-                                        this.props.usePDFKit && this.state.isSupportPDFKit === 1?(
-                                                <PdfCustom
-                                                    ref={component => (this._root = component)}
-                                                    {...this.props}
-                                                    style={[{backgroundColor: '#EEE',overflow: 'hidden'}, this.props.style]}
-                                                    path={this.state.path}
-                                                    onChange={this._onChange}
-                                                />
-                                            ):(<PdfView
-                                                {...this.props}
-                                                style={[{backgroundColor: '#EEE',overflow: 'hidden'}, this.props.style]}
-                                                path={this.state.path}
-                                                onLoadComplete={this.props.onLoadComplete}
-                                                onPageChanged={this.props.onPageChanged}
-                                                onError={this._onError}
-                                                onPageSingleTap={this.props.onPageSingleTap}
-                                                onScaleChanged={this.props.onScaleChanged}
-                                                onPressLink={this.props.onPressLink}
-                                            />)
+                                    ):(<PdfCustom
+                                           ref={component => (this._root = component)}
+                                           {...this.props}
+                                           style={[{backgroundColor: '#EEE',overflow: 'hidden'}, this.props.style]}
+                                           path={this.state.path}
+                                           onChange={this._onChange}
+                                         />
+                                      )
                                     )
                                 )}
                     </View>);
