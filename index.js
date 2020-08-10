@@ -87,7 +87,7 @@ export default class Pdf extends Component {
         enableRTL: false,
         activityIndicatorProps: {color: '#009900', progressTintColor: '#009900'},
         trustAllCerts: true,
-        usePDFKit: true,
+        usePDFKit: false,
         onLoadProgress: (percent) => {
         },
         onLoadComplete: (numberOfPages, path) => {
